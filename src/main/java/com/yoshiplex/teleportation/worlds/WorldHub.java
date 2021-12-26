@@ -95,14 +95,6 @@ public class WorldHub extends YPWorld {
 	public boolean shouldTeleportOnLogin(String address) {
 		return address.startsWith("server.");
 	}
-	@Override
-	public String getMOTD() {
-		
-		if(Bukkit.hasWhitelist()){
-			return super.getMOTD();
-		}
-		return YPWorld.getFirstLine() + "\n" + ChatColor.AQUA + "Guitar Hero released. Smash Bros in development.";
-	}
 
 	@Override
 	public String getComeCommand() {

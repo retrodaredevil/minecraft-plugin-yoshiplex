@@ -169,7 +169,14 @@ public abstract class YPWorld implements Runnable{
 			}
 		}.runTaskLater(Main.getInstance(), 3 * 20);
 	}
-	public String getMOTD(){
+	public String getMOTD() {
+		if(Bukkit.hasWhitelist()){
+			return getWhitelistMOTD();
+		}
+		return YPWorld.getFirstLine() + "\n" + ChatColor.AQUA + "Welcome to Josh's server!";
+	}
+
+	protected static String getWhitelistMOTD() {
 		return getFirstLine() + "\n" + ChatColor.GREEN + "Sorry, the server has it's whitelist on right now.";
 	}
 	
@@ -198,7 +205,7 @@ public abstract class YPWorld implements Runnable{
 	
 	public static String getFirstLine(){
 		String line = new RainbowText("-----", ChatColor.STRIKETHROUGH.toString()).getText();
-		return ("\t" + line + ChatColor.RESET + ChatColor.GREEN + ChatColor.BOLD + "YoshiPlex" + ChatColor.RESET + line + ChatColor.RESET + ChatColor.DARK_GREEN + "\t\t\t\tyoshiplex.com").replace("\t", "    ");
+		return ("\t" + line + ChatColor.RESET + ChatColor.GREEN + ChatColor.BOLD + "YoshiPlex" + ChatColor.RESET + line + ChatColor.RESET + ChatColor.DARK_GREEN + "\t\t\t\t:)").replace("\t", "    ");
 	}
 	public BossBar getBossBar() {
 		return bar;

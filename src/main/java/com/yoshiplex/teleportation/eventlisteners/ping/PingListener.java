@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
+import com.google.gson.*;
+import net.minecraft.server.v1_9_R2.ChatDeserializer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -14,13 +16,6 @@ import org.inventivetalent.packetlistener.handler.PacketHandler;
 import org.inventivetalent.packetlistener.handler.ReceivedPacket;
 import org.inventivetalent.packetlistener.handler.SentPacket;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
 import com.mojang.authlib.GameProfile;
 import com.yoshiplex.Main;
 import com.yoshiplex.YPTime;
@@ -38,9 +33,11 @@ import net.minecraft.server.v1_9_R2.ServerPing;
 public class PingListener extends PacketHandler {
 	private static GsonBuilder build = new GsonBuilder();
 	private static final Gson a;
-	
+
 	static{
 		build
+				.registerTypeAdapter(ServerPing.ServerData.class, new ServerDataSerializer())
+				.registerTypeAdapter(ServerPing.ServerPingPlayerSample.class, new ServerPingPlayerSampleSerializer())
 				.registerTypeAdapter(ServerPing.class, new OverridenServerPingSerializer())
 				.registerTypeHierarchyAdapter(IChatBaseComponent.class, new IChatBaseComponent.ChatSerializer())
 				.registerTypeHierarchyAdapter(ChatModifier.class, new ChatModifier.ChatModifierSerializer())
@@ -241,6 +238,82 @@ public class PingListener extends PacketHandler {
 	public static int getPingCount(){
 		return pingCount;
 	}
-	
 
+
+	public static class ServerDataSerializer implements JsonDeserializer<ServerPing.ServerData>, JsonSerializer<ServerPing.ServerData> {
+
+		public JsonElement serialize(ServerPing.ServerData object, Type type, JsonSerializationContext jsonserializationcontext) {
+
+			JsonObject jsonobject = new JsonObject();
+
+			jsonobject.addProperty("name", object.a());
+			jsonobject.addProperty("protocol", Integer.valueOf(object.getProtocolVersion()));
+			return jsonobject;
+
+		}
+
+		public ServerPing.ServerData deserialize(JsonElement jsonelement, Type type, JsonDeserializationContext jsondeserializationcontext) throws JsonParseException {
+			JsonObject jsonobject = ChatDeserializer.m(jsonelement, "version");
+
+			return new ServerPing.ServerData(ChatDeserializer.h(jsonobject, "name"), ChatDeserializer.n(jsonobject, "protocol"));
+
+		}
+	}
+	/**
+	 * Almost exactly the same as net.minecraft.server.ServerPing.ServerPingPlayerSample.Serializer
+	 */
+	public static class ServerPingPlayerSampleSerializer implements JsonDeserializer<ServerPing.ServerPingPlayerSample>, JsonSerializer<ServerPing.ServerPingPlayerSample> {
+
+		@Override
+		public JsonElement serialize(ServerPing.ServerPingPlayerSample object, Type type, JsonSerializationContext jsonserializationcontext) {
+
+			JsonObject jsonobject = new JsonObject();
+
+			jsonobject.addProperty("max", Integer.valueOf(object.a()));
+			jsonobject.addProperty("online", Integer.valueOf(object.b()));
+			if (object.c() != null && object.c().length > 0) {
+				JsonArray jsonarray = new JsonArray();
+
+				for (int i = 0; i < object.c().length; ++i) {
+					JsonObject jsonobject1 = new JsonObject();
+					UUID uuid = object.c()[i].getId();
+
+					jsonobject1.addProperty("id", uuid == null ? "" : uuid.toString());
+					jsonobject1.addProperty("name", object.c()[i].getName());
+					jsonarray.add(jsonobject1);
+				}
+
+				jsonobject.add("sample", jsonarray);
+			}
+
+			return jsonobject;
+
+		}
+
+		@Override
+		public ServerPing.ServerPingPlayerSample deserialize(JsonElement jsonelement, Type type, JsonDeserializationContext jsondeserializationcontext) throws JsonParseException {
+			JsonObject jsonobject = ChatDeserializer.m(jsonelement, "players");
+			ServerPing.ServerPingPlayerSample serverping_serverpingplayersample = new ServerPing.ServerPingPlayerSample(ChatDeserializer.n(jsonobject, "max"), ChatDeserializer.n(jsonobject, "online"));
+
+			if (ChatDeserializer.d(jsonobject, "sample")) {
+				JsonArray jsonarray = ChatDeserializer.u(jsonobject, "sample");
+
+				if (jsonarray.size() > 0) {
+					GameProfile[] agameprofile = new GameProfile[jsonarray.size()];
+
+					for (int i = 0; i < agameprofile.length; ++i) {
+						JsonObject jsonobject1 = ChatDeserializer.m(jsonarray.get(i), "player[" + i + "]");
+						String s = ChatDeserializer.h(jsonobject1, "id");
+
+						agameprofile[i] = new GameProfile(UUID.fromString(s), ChatDeserializer.h(jsonobject1, "name"));
+					}
+
+					serverping_serverpingplayersample.a(agameprofile);
+				}
+			}
+
+			return serverping_serverpingplayersample;
+
+		}
+	}
 }
