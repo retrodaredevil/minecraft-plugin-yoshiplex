@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+}
+
+group 'me.retrodaredevil.yoshiplex'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url 'https://maven.sk89q.com/repo/' }
+    // https://www.spigotmc.org/resources/protocollib.1997/
+    maven { url "https://repo.dmulloy2.net/repository/public/" } // for ProtocolLib
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
+    // look at versions here: https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/spigotmc/spigot-api/
+    compileOnly 'org.spigotmc:spigot-api:1.9.4-R0.1-SNAPSHOT'
+    compileOnly 'com.sk89q:worldguard:6.1'
+    compileOnly 'com.sk89q.worldedit:worldedit-bukkit:6.1'
+    compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.7.0" // 4.7.0 is likely not the version we use on the server
+
+
+    // doesn't work https://mvnrepository.com/artifact/org.inventivetalent/particleapi
+    compileOnly files("libs/ParticleAPI_v2.1.0.jar")
+    // doesn't work https://mvnrepository.com/artifact/org.inventivetalent/packetlistenerapi
+    compileOnly files("libs/PacketListenerAPI_v3.4.2.jar")
+
+    // https://github.com/ConnorLinfoot/ActionBarAPI
+    compileOnly files("libs/ActionBarAPI-1.4.jar")
+
+    compileOnly files("libs/jAPI.jar")
+    compileOnly files("libs/Vault.jar")
+    // https://github.com/TigerHix/ScoreboardLib
+    compileOnly files("libs/ScoreboardLib.jar")
+    compileOnly files("libs/ConnectFourEdit.jar") // edit of version 2.9
+    compileOnly files("libs/Essentials-2.x-SNAPSHOTEDIT.jar") // edit of some version
+    compileOnly files("libs/NoteBlockAPI.jar")
+    compileOnly files("libs/BanManager.jar")
+    compileOnly files("libs/RainbowText.jar") // This is a library I made
+
+    // We cannot import NMS, so we just use build tools to compile a jar file that contains what we need
+    compileOnly files("buildtools/builddata/spigot-1.9.4.jar")
+}
+
+test {
+    useJUnitPlatform()
+}

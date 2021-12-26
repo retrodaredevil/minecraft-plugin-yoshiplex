@@ -1,0 +1,110 @@
+name: CRAFT64
+main: com.yoshiplex.Main
+version: 1.1
+description: The main plugin for CRAFT 64
+authors: [retrodaredevil]
+depend: [BattleArena,ProtocolLib,Essentials,Vault,jAPI,DisableAPI,SoundCancelerAPI,BanManager]
+#ERROR CODES:
+#0003: Repeated usage - check TheCommands class
+commands:
+  info:
+    description: Tells you some info
+    usage: /<command>
+  help:
+    description: Displays player help
+    usage: /<command>
+  day:
+    description: NulL
+    usage: /<command>
+  night:
+    description: NulL
+    usage: /<command>
+  dawn:
+    description: NulL
+    usage: /<command>
+  dusk:
+    description: NulL
+    usage: /<command>
+  game:
+    description: The command to go between servers
+    usage: /<command> <game> <you> <have> <gotten> <an> <error> <ERROR> <CODE:> <0003>
+    aliases: [server]
+  register:
+    description: The command to register on the website
+    usage: /<command>
+    aliases: [website]
+  hub:
+    description: Go to the hub
+    usage: /<command>
+    aliases: [lobby]
+  yoface:
+    description: NulL
+    usage: /<command>
+  disconnect:
+    description: NulL
+    usage: /<command>
+  new:
+    description: NulL
+    usage: /<command>
+    aliases: [newest,newplayer,]
+  prun:
+    description: NulL
+    usage: /<command>
+    #aliases: [newest,newplayer,]
+  test:
+    description: NulL
+    usage: /<command>
+  get:
+    description: Gives players the resource pack
+    usage: /<command>
+  ab:
+    description: NulL
+    usage: /<command>
+  show:
+    description: shows death messages
+    usage: /<command>
+  spawn:
+    description: Takes you to the spawn of the current world if programmed
+    usage: /<command>
+  color:
+    description: Choose a name color!
+    usage: /<command>
+  noupdate:
+    description: Stops a player from receiving a coin boast for an amount of time
+    usage: /<command>
+  hat:
+    description: Allows players to choose thier hat!
+    usage: /<command>
+    aliases: [hats]
+  shop:
+    description: Opens the shop
+    usage: /<command>
+  oneup:
+    description: manage one ups
+    usage: /<command>
+  particle:
+    description: Allows players to choose a particle
+    usage: /<command>
+    aliases: [part, particles]
+  kit:
+    description: NulL
+    usage: /<command>
+    aliases: [kits]
+  profile:
+    description: NulL
+    usage: /<command>
+    aliases: [pro]
+  mk:
+    description: NulL
+    usage: /<command>
+  character:
+    description: NulL
+    usage: /<command>
+    aliases: [char]
+  ypreload:
+    description: NulL
+    usage: /<command>
+  party:
+    description: nulL
+    usage: /<command>
+    
