@@ -4,6 +4,7 @@ cd "$BASEDIR" || exit 1
 
 ./download.sh || exit 1
 
+mkdir builddata 2>/dev/null
 cd builddata || exit 1
 # You need to use Java 8: "sdk install java 8.0.292.j9-adpt" may help
 # sdk use java 8.0.292.j9-adpt
