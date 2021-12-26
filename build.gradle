@@ -13,6 +13,7 @@ repositories {
     maven { url 'https://maven.sk89q.com/repo/' }
     // https://www.spigotmc.org/resources/protocollib.1997/
     maven { url "https://repo.dmulloy2.net/repository/public/" } // for ProtocolLib
+    maven { url "https://repo.citizensnpcs.co/" } // for CitizensAPI
 }
 
 dependencies {
@@ -25,6 +26,7 @@ dependencies {
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:6.1'
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.7.0" // 4.7.0 is likely not the version we use on the server
 
+    compileOnly 'net.citizensnpcs:citizensapi:2.0.18-SNAPSHOT' // https://github.com/CitizensDev/CitizensAPI
 
     // doesn't work https://mvnrepository.com/artifact/org.inventivetalent/particleapi
     compileOnly files("libs/ParticleAPI_v2.1.0.jar")
@@ -43,9 +45,15 @@ dependencies {
     compileOnly files("libs/NoteBlockAPI.jar")
     compileOnly files("libs/BanManager.jar")
     compileOnly files("libs/RainbowText.jar") // This is a library I made
+    compileOnly files("libs/TitleAPI-1.7.3.jar")
+    compileOnly files("libs/votifier-1.9.jar")
+    compileOnly files("libs/LibsDisguises.jar")
+    compileOnly files("libs/SoundCanceler.jar") // This is a library I made
+    compileOnly files("libs/HologramAPI_v1.5.2.jar") // https://www.spigotmc.org/resources/api-hologramapi.6766/
 
     // We cannot import NMS, so we just use build tools to compile a jar file that contains what we need
-    compileOnly files("buildtools/builddata/spigot-1.9.4.jar")
+//    compileOnly files("buildtools/builddata/spigot-1.9.4.jar")
+    compileOnly files("spigot-1.9.4.jar")
 }
 
 test {

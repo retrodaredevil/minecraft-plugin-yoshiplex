@@ -13,9 +13,17 @@ You can see for yourself which ones are there, but here are a few
 
 * https://dev.bukkit.org/projects/connect-four
   * I have modified the Jar file that is contained in the `libs/` folder.
-* https://github.com/essentials/Essentials
+* GNU https://github.com/essentials/Essentials
   * I have modified the Jar file that is contained in the `libs/` folder.
+* https://github.com/ConnorLinfoot/TitleAPI
+  * https://www.spigotmc.org/resources/1325/
+* GNUv3 https://github.com/vexsoftware/votifier
+  * https://dev.bukkit.org/projects/votifier
+* https://github.com/libraryaddict/LibsDisguises/
 
 
 ### Useful commands:
 * Finding non-ascii characters: `grep -ri --color='auto' -P -n "[\x80-\xFF]" src`
+
+### Other stuff
+* https://www.spigotmc.org/threads/tutorial-making-the-serverlist-motd-have-hover-text-and-making-the-player-count-whatever-you-want.156114/
