@@ -23,8 +23,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import com.connorlinfoot.actionbarapi.ActionBarAPI;
-import com.vexsoftware.votifier.model.Vote;
-import com.vexsoftware.votifier.model.VotifierEvent;
 import com.yoshiplex.Constants;
 import com.yoshiplex.Main;
 import com.yoshiplex.YPTime;
@@ -71,56 +69,11 @@ public class WorldChange implements Listener{
 		p.setMainBar(world.getBossBar());
 		hubMusic(player);
 
-		String path = "recent-votes";
-		FileConfiguration c = instance.getConfig();
-		
-		List<String> l = c.getStringList(path);
-		while(this.checkVotes(p,l)){
-			c.set(path, l);
-		}
 	}
-	private boolean checkVotes(YPPlayer p, List<String> l){
-		boolean contains = false;
-		String remove = null;
-		for(String s : l){
-			if(s.equalsIgnoreCase(p.getName())){
-				contains = true;
-				remove = s;
-				break;
-			}
-		}
-		if(!contains) return false;
-		l.remove(remove);
-		this.giveVoteRewards(p);
-		return true;
-		
-	}
-	@EventHandler
-	public void onVote(VotifierEvent e){
-		Vote v = e.getVote();
-		String name = v.getUsername();
-		if(name != null){
-			Player test = Bukkit.getPlayer(name);
-			if(test != null && test.isOnline()){
-				this.giveVoteRewards(YPPlayer.getYPPlayer(test));
-				return;
-			}
-			String path = "recent-votes";
-			FileConfiguration c = instance.getConfig();
+	// We used to have vote logic here.
+	//   It would receive vote events, save recent voters to a config file.
+	//   When a player joined, that file would be checked to see if they had recently voted. If not, tell them
 
-			List<String> l = c.getStringList(path);
-			l.add(name);
-			c.set(path, l);
-			System.out.println(name + " voted on " + v.getServiceName());
-		}
-	}
-	public void giveVoteRewards(YPPlayer p){
-		p.addOneups(1);
-		p.addCoins(5, false);
-		p.sendMessage(ChatColor.GREEN + "Thanks for voting! We gave you 1 1-ups and 5 coins! You can get even more 1-ups and coins by voting on other websites!");
-	}
-
-	
 	
 	private void checkData(Player p) {
 		String path = "players." + p.getUniqueId().toString();

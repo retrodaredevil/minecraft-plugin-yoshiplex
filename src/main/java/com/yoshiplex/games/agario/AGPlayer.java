@@ -86,6 +86,7 @@ public class AGPlayer extends GamePlayer{
 				c = it.next();
 			} catch(ConcurrentModificationException e){
 				e.printStackTrace();
+				// TODO this is not an ideal way to handle this problem...
 				return;
 			}
 			

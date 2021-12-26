@@ -3,7 +3,7 @@ main: com.yoshiplex.Main
 version: 1.1
 description: The main plugin for CRAFT 64
 authors: [retrodaredevil]
-depend: [BattleArena,ProtocolLib,Essentials,Vault,jAPI,DisableAPI,SoundCancelerAPI,BanManager]
+depend: [BattleArena,ProtocolLib,Essentials,Vault,jAPI,DisableAPI,SoundCancelerAPI]
 #ERROR CODES:
 #0003: Repeated usage - check TheCommands class
 commands:

@@ -18,8 +18,6 @@ import com.yoshiplex.YPTime;
 import com.yoshiplex.customplayer.YPPlayer;
 import com.yoshiplex.parties.Party;
 
-import me.confuser.banmanager.BmAPI;
-
 public class PlayerChat implements Listener{
 
 	private static final List<String> blacklisted = Arrays.asList("g","report");
@@ -75,15 +73,9 @@ public class PlayerChat implements Listener{
 		Player p = e.getPlayer();
 		String m = e.getMessage();
 		String[] theMessage = m.split(" ", 2);
-		if(BmAPI.isMuted(p)){
-			for(String s : blacklisted){
-				if(theMessage[0].equalsIgnoreCase("/" + s)){
-					p.chat("this is the default message sent when a player tries to run a command while muted.");
-					e.setCancelled(true);
-					return;
-				}
-			}
-		}
+
+		// We used to have logic for checking if a player was muted here, but we removed BanManager
+
 		//String[] args = theMessage[1].split(" ");
 		String label = theMessage[0];
 		String[] displayName = p.getDisplayName().split(" ", 2);
@@ -108,29 +100,9 @@ public class PlayerChat implements Listener{
 			for(Player all : Bukkit.getOnlinePlayers()){
 				all.sendMessage(message);
 			}
-			List<String> logs = null;
-			if(Main.getChatLog().getConfig().getList("log") == null){
-				logs = new ArrayList<String>();
-			} else {
-				logs = Main.getChatLog().getConfig().getStringList("log");
-			}
-			Main.getChatLog().reloadConfig();
-			logs.add("d.m.y " +YPTime.getUTC() + " " + p.getName() + " (G): " + e.getMessage());
-			Main.getChatLog().getConfig().set("log", logs);
-			Main.getChatLog().saveConfig();
-		} else {
-			List<String> logs = null;
-			if(Main.getChatLog().getConfig().getList("log") == null){
-				logs = new ArrayList<String>();
-			} else {
-				logs = Main.getChatLog().getConfig().getStringList("log");
-			}
-			Main.getChatLog().reloadConfig();
-			logs.add("d.m.y " +YPTime.getUTC() + " " + p.getName() + " (C): " + e.getMessage());
-			Main.getChatLog().getConfig().set("log", logs);
-			Main.getChatLog().saveConfig();
-			
 		}
+		// We used to have logic for writing player chat to a log file here, but we removed it.
+		//   It was pretty bad to code to begin with.
 	}
 	public static String getChatColor(Player p, Main instance){
 		if(instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor") == null || instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor").equals(ChatColor.BLACK.toString().replace("§", ""))){

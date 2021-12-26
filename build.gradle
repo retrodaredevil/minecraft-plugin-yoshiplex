@@ -47,10 +47,8 @@ dependencies {
     compileOnly files("libs/ConnectFourEdit.jar") // edit of version 2.9
     compileOnly files("libs/Essentials-2.x-SNAPSHOTEDIT.jar") // edit of some version
     compileOnly files("libs/NoteBlockAPI.jar")
-    compileOnly files("libs/BanManager.jar")
     compileOnly files("libs/RainbowText.jar") // This is a library I made
     compileOnly files("libs/TitleAPI-1.7.3.jar")
-    compileOnly files("libs/votifier-1.9.jar")
     compileOnly files("libs/LibsDisguises.jar")
     compileOnly files("libs/SoundCanceler.jar") // This is a library I made
     compileOnly files("libs/HologramAPI_v1.5.2.jar") // https://www.spigotmc.org/resources/api-hologramapi.6766/
