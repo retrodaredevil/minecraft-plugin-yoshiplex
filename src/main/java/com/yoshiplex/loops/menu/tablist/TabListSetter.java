@@ -95,10 +95,10 @@ public class TabListSetter extends BukkitRunnable implements Listener{
 				}
 			} else {
 				if(displayName.length == 1){
-					name = "ง" + Main.config.getString("players." + online.getUniqueId().toString() + ".namecolor") + 
+					name = "ยง" + Main.config.getString("players." + online.getUniqueId().toString() + ".namecolor") + 
 							ChatColor.stripColor(displayName[0]);
 				} else {
-					name = "ง" + Main.config.getString("players." + online.getUniqueId().toString() + ".namecolor") + 
+					name = "ยง" + Main.config.getString("players." + online.getUniqueId().toString() + ".namecolor") + 
 							ChatColor.stripColor(displayName[1]);
 				}
 			}
@@ -133,10 +133,10 @@ public class TabListSetter extends BukkitRunnable implements Listener{
 				}
 			} else {
 				if(displayName.length == 1){
-					name = "ง" + Main.config.getString("players." + world.getUniqueId().toString() + ".namecolor") + 
+					name = "ยง" + Main.config.getString("players." + world.getUniqueId().toString() + ".namecolor") + 
 							ChatColor.stripColor(displayName[0]);
 				} else {
-					name = "ง" + Main.config.getString("players." + world.getUniqueId().toString() + ".namecolor") + 
+					name = "ยง" + Main.config.getString("players." + world.getUniqueId().toString() + ".namecolor") + 
 							ChatColor.stripColor(displayName[1]);
 				}
 			}
@@ -174,11 +174,11 @@ public class TabListSetter extends BukkitRunnable implements Listener{
 					}
 				} else {
 					if (displayName.length == 1) {
-						name = "ง"
+						name = "ยง"
 								+ Main.config.getString("players." + staff.getUniqueId().toString() + ".namecolor")
 								+ ChatColor.stripColor(displayName[0]);
 					} else {
-						name = "ง"
+						name = "ยง"
 								+ Main.config.getString("players." + staff.getUniqueId().toString() + ".namecolor")
 								+ ChatColor.stripColor(displayName[1]);
 					}

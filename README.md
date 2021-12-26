@@ -15,3 +15,7 @@ You can see for yourself which ones are there, but here are a few
   * I have modified the Jar file that is contained in the `libs/` folder.
 * https://github.com/essentials/Essentials
   * I have modified the Jar file that is contained in the `libs/` folder.
+
+
+### Useful commands:
+* Finding non-ascii characters: `grep -ri --color='auto' -P -n "[\x80-\xFF]" src`

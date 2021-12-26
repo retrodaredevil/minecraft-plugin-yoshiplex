@@ -48,10 +48,10 @@ public class PlayerChat implements Listener{
 			e.setFormat(this.getPartyPrefix(p) + p.getDisplayName() + ChatColor.YELLOW + ": " + ChatColor.WHITE + e.getMessage());
 		} else {
 			if(displayName.length == 1){
-				e.setFormat(this.getPartyPrefix(p) + "ง" + instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor") + 
+				e.setFormat(this.getPartyPrefix(p) + "ยง" + instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor") + 
 						ChatColor.stripColor(displayName[0]) + ChatColor.YELLOW + ": " + ChatColor.WHITE + e.getMessage());
 			} else {
-				e.setFormat(this.getPartyPrefix(p)  +displayName[0] + " ง" + instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor") + 
+				e.setFormat(this.getPartyPrefix(p)  +displayName[0] + " ยง" + instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor") + 
 						ChatColor.stripColor(displayName[1]) + ChatColor.YELLOW + ": " + ChatColor.WHITE + e.getMessage());
 			}
 		}
@@ -95,13 +95,13 @@ public class PlayerChat implements Listener{
 			}
 			String message = null;
 			{
-				if(instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor") == null || instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor").equals(ChatColor.BLACK.toString().replace("ง", ""))){
-					message = "งbงl" + getWorldTag(p.getWorld().getName()) + " " + this.getPartyPrefix(p) + p.getDisplayName() + ChatColor.YELLOW + ": " + ChatColor.WHITE + theMessage[1];
+				if(instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor") == null || instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor").equals(ChatColor.BLACK.toString().replace("ยง", ""))){
+					message = "ยงbยงl" + getWorldTag(p.getWorld().getName()) + " " + this.getPartyPrefix(p) + p.getDisplayName() + ChatColor.YELLOW + ": " + ChatColor.WHITE + theMessage[1];
 				} else {
 					if(displayName.length == 1){
-						message = "งbงl" + getWorldTag(p.getWorld().getName()) +" " +this.getPartyPrefix(p) +  "ง" + instance.getConfig().getString("players." + p.getUniqueId() + ".namecolor") + ChatColor.stripColor(displayName[0]) + ChatColor.YELLOW + ": " + ChatColor.WHITE + theMessage[1];
+						message = "ยงbยงl" + getWorldTag(p.getWorld().getName()) +" " +this.getPartyPrefix(p) +  "ยง" + instance.getConfig().getString("players." + p.getUniqueId() + ".namecolor") + ChatColor.stripColor(displayName[0]) + ChatColor.YELLOW + ": " + ChatColor.WHITE + theMessage[1];
 					} else {
-						message = "งbงl" + getWorldTag(p.getWorld().getName()) +" " +this.getPartyPrefix(p)  + displayName[0] + " ง" + instance.getConfig().getString("players." + p.getUniqueId() + ".namecolor") + ChatColor.stripColor(displayName[1]) + ChatColor.YELLOW + ": " + ChatColor.WHITE + theMessage[1];
+						message = "ยงbยงl" + getWorldTag(p.getWorld().getName()) +" " +this.getPartyPrefix(p)  + displayName[0] + " ยง" + instance.getConfig().getString("players." + p.getUniqueId() + ".namecolor") + ChatColor.stripColor(displayName[1]) + ChatColor.YELLOW + ": " + ChatColor.WHITE + theMessage[1];
 					}
 				}
 			}
@@ -133,10 +133,10 @@ public class PlayerChat implements Listener{
 		}
 	}
 	public static String getChatColor(Player p, Main instance){
-		if(instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor") == null || instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor").equals(ChatColor.BLACK.toString().replace("ง", ""))){
+		if(instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor") == null || instance.getConfig().getString("players." + p.getUniqueId().toString() + ".namecolor").equals(ChatColor.BLACK.toString().replace("ยง", ""))){
 			return ChatColor.RESET.toString();
 		} else {
-			return "ง" + instance.getConfig().getString("players." + p.getUniqueId() + ".namecolor");
+			return "ยง" + instance.getConfig().getString("players." + p.getUniqueId() + ".namecolor");
 		}
 	}
 	public String getWorldTag(String name){

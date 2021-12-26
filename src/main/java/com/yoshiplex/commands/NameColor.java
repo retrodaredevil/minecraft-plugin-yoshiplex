@@ -23,7 +23,7 @@ import com.yoshiplex.Main;
 
 public class NameColor implements CommandExecutor, Listener{
 	private Inventory chooseColor = null;
-	private final String helpString = ChatColor.RED + "Usage: /color <color> " + ChatColor.GRAY + "   Availible colors: งrง00 ง11 ง22 ง33 ง44 ง55 ง66 ง77 ง88 ง99 งaa งbb งcc งdd งee งff" + ChatColor.RED + "  Or do /color for a GUI menu.";
+	private final String helpString = ChatColor.RED + "Usage: /color <color> " + ChatColor.GRAY + "   Availible colors: ยงrยง00 ยง11 ยง22 ยง33 ยง44 ยง55 ยง66 ยง77 ยง88 ยง99 ยงaa ยงbb ยงcc ยงdd ยงee ยงff" + ChatColor.RED + "  Or do /color for a GUI menu.";
 	private final List<String> allowedColors = Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
 	
 	public NameColor (Plugin p, boolean registerEvents){
@@ -65,7 +65,7 @@ public class NameColor implements CommandExecutor, Listener{
 				if(arg.equals("0")){
 					p.sendMessage(ChatColor.GREEN + "You have now reset your name color.");
 				} else {
-					p.sendMessage(ChatColor.GREEN + "You have now set your namecolor to ง" + arg + "this");
+					p.sendMessage(ChatColor.GREEN + "You have now set your namecolor to ยง" + arg + "this");
 				}
 			} else {
 				p.sendMessage(ChatColor.RED + "That letter is not a valid color.");
@@ -84,12 +84,12 @@ public class NameColor implements CommandExecutor, Listener{
 		Inventory inv = Bukkit.createInventory(null, 18, ChatColor.RED + "Name color select");
 		
 		DyeColor[] data = {DyeColor.BLUE, DyeColor.GREEN, DyeColor.CYAN, DyeColor.RED, DyeColor.PURPLE, DyeColor.ORANGE, DyeColor.SILVER, DyeColor.GRAY, DyeColor.CYAN, DyeColor.LIME, DyeColor.LIGHT_BLUE, DyeColor.RED, DyeColor.MAGENTA, DyeColor.YELLOW, DyeColor.WHITE};
-		String[] colors = {"ง1", "ง2", "ง3", "ง4", "ง5", "ง6", "ง7", "ง8", "ง9", "งa", "งb", "งc", "งd", "งe", "งf"}; // 15
+		String[] colors = {"ยง1", "ยง2", "ยง3", "ยง4", "ยง5", "ยง6", "ยง7", "ยง8", "ยง9", "ยงa", "ยงb", "ยงc", "ยงd", "ยงe", "ยงf"}; // 15
 		
 		for(int i = 0; i < 15; i++){
 			ItemStack color = new ItemStack(Material.WOOL, 1, data[i].getData());
 			ItemMeta colorMeta = color.getItemMeta();
-			String name = colors[i] + ChatColor.getByChar(colors[i].replace("ง", "")).name();
+			String name = colors[i] + ChatColor.getByChar(colors[i].replace("ยง", "")).name();
 			colorMeta.setDisplayName(name);
 			colorMeta.setLore(Arrays.asList(""));
 			color.setItemMeta(colorMeta);

@@ -180,7 +180,7 @@ public class TheCommands implements CommandExecutor{
 				    String arg = args[i] + " "; //get the argument, and add a space so that the words get spaced out
 				    ms = ms + arg; //add the argument to myString
 				}
-				ms = ms.replace("&", "ง");
+				ms = ms.replace("&", "ยง");
 				for (Player player : Bukkit.getServer().getOnlinePlayers()){
 					ActionBarAPI.sendActionBar(player, ms);
 				}
