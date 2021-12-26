@@ -35,15 +35,12 @@ import net.minecraft.server.v1_9_R2.ChatModifier;
 import net.minecraft.server.v1_9_R2.ChatTypeAdapterFactory;
 import net.minecraft.server.v1_9_R2.IChatBaseComponent;
 import net.minecraft.server.v1_9_R2.ServerPing;
-import net.minecraft.server.v1_9_R2.ServerPing.ServerData;
-import net.minecraft.server.v1_9_R2.ServerPing.ServerPingPlayerSample;
 public class PingListener extends PacketHandler {
 	private static GsonBuilder build = new GsonBuilder();
 	private static final Gson a;
 	
 	static{
-		build.registerTypeAdapter(ServerPing.ServerData.class, new OverridenServerDataSerializer())
-				.registerTypeAdapter(ServerPing.ServerPingPlayerSample.class, new OverridenServerSampleSerializer())
+		build
 				.registerTypeAdapter(ServerPing.class, new OverridenServerPingSerializer())
 				.registerTypeHierarchyAdapter(IChatBaseComponent.class, new IChatBaseComponent.ChatSerializer())
 				.registerTypeHierarchyAdapter(ChatModifier.class, new ChatModifier.ChatModifierSerializer())
@@ -240,25 +237,6 @@ public class PingListener extends PacketHandler {
 			
 		}
 
-	}
-	public static class OverridenServerDataSerializer extends ServerPing.ServerData.Serializer{
-		
-		@Override
-        public JsonElement a(ServerData serverData, Type type, JsonSerializationContext jsonSerializationContext) {
-            return super.a(serverData, type, jsonSerializationContext);
-        }
-		
-	}
-	public static class OverridenServerSampleSerializer extends ServerPing.ServerPingPlayerSample.Serializer {
-		@Override
-		public JsonElement a(ServerPingPlayerSample serverPingPlayerSample, Type type,
-				JsonSerializationContext jsonSerializationContext) {
-			
-			JsonObject jsonObject = (JsonObject) super.a(serverPingPlayerSample, type, jsonSerializationContext);
-
-			return jsonObject;
-			
-		}
 	}
 	public static int getPingCount(){
 		return pingCount;
