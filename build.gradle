@@ -56,8 +56,7 @@ dependencies {
     compileOnly files("libs/HologramAPI_v1.5.2.jar") // https://www.spigotmc.org/resources/api-hologramapi.6766/
 
     // We cannot import NMS, so we just use build tools to compile a jar file that contains what we need
-//    compileOnly files("buildtools/builddata/spigot-1.9.4.jar")
-    compileOnly files("spigot-1.9.4.jar")
+    compileOnly files("buildtools/builddata/spigot-1.9.4.jar")
 }
 
 test {
